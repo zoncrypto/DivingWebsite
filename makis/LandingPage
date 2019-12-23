@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Landing Page</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="lp.css">
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container">
+    		<div class="navbar-header">
+      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        			<span class="sr-only">Toggle navigation</span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
+      			<a class="navbar-brand" href="#">DiverVille</a>
+    		</div>
+    	<div id="navbar" class="collapse navbar-collapse">
+      		<ul class="nav navbar-nav">
+        		<li class="active"><a href="#">Home</a></li>
+        		<li><a href="#about">About</a></li>
+        		<li><a href="#contact">Contact</a></li>
+      		</ul>
+      		<ul class="nav navbar-nav navbar-right">
+        		<li><a href="#">Signup  <i class="fa fa-user-plus"></i></a></li>
+        		<li><a href="#about">Login  <i class="fa fa-user"></i></a></li>
+      		</ul>
+    	</div>
+  		</div>
+ 	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="content">
+					<h1>DiverVille</h1>
+					<h3>Explore what a diver really wants to</h3>
+					<hr>
+					<button class="btn btn-info btn-lg">Dive In!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
