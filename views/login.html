@@ -16,10 +16,10 @@
         <div class="col-md-6 mx-auto">
           <h1>Sign In</h1>
           <br>
-          <form>
+          <form action="loginprocess.php" method="POST">
             <div class="form-group">
               <label>Username</label>
-              <input type="text"class="form-control"id="name" placeholder="Username">
+              <input type="text"class="form-control"name="username" placeholder="Username">
               <div class="invalid-feedback">
                 Username must be between 2 and 10 characters
               </div>
@@ -27,7 +27,7 @@
             <br>
             <div class="form-group">
                 <label>Password</label>
-                <input type="text"class="form-control"id="password" placeholder="Password">
+                <input type="text"class="form-control"name="password" placeholder="Password">
                 <div class="invalid-feedback">
                   Enter a valid password. (lowercase, uppercase, number)
                 </div>
@@ -49,7 +49,7 @@
                   </div>
                 -->
                   Don't have an accout? 
-                  <a href="url">  Sign up!</a>
+                  <a href="../app/signup.php">  Sign up!</a>
     
                   <br>
                   <br>
