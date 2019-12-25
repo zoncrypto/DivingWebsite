@@ -1,5 +1,5 @@
 document.getElementById('name').addEventListener('blur',validateName);
-document.getElementById('zip').addEventListener('blur',validateZip);
+document.getElementById('password').addEventListener('blur',validatePassword);
 document.getElementById('email').addEventListener('blur',validateEmail);
 document.getElementById('phone').addEventListener('blur',validatePhone);
 
@@ -21,6 +21,16 @@ if(!re.test(zip.value)){
 zip.classList.add('is-invalid');
 }else
 zip.classList.remove('is-ivalid');
+}
+
+function validatePassword(){
+  const name=document.getElementById('password');
+const re=/^[a-zA-Z0-9]{2,10}$/;
+
+if(!re.test(password.value)){
+password.classList.add('is-invalid');
+}else
+password.classList.remove('is-ivalid');
 }
 
 function validateEmail(){
