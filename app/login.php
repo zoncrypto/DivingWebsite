@@ -1,6 +1,6 @@
-<?php require_once '../vendor/autoload.php'; ?>
-<?php $loader = new \Twig\Loader\FilesystemLoader('../views/'); ?>
+<?php 
+require_once '../app/twig.php';
 
-<?php $twig = new \Twig\Environment($loader); ?>
+echo $twig->render('login.html', ['error_message' => "" , 'style' => "visibility: hidden;"]); 
 
-<?php echo $twig->render('login.html'); ?>
+?>

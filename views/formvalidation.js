@@ -1,16 +1,16 @@
 document.getElementById('name').addEventListener('blur',validateName);
-document.getElementById('password').addEventListener('blur',validatePassword);
+document.getElementById('pass').addEventListener('blur',validatePassword);
 document.getElementById('email').addEventListener('blur',validateEmail);
 document.getElementById('phone').addEventListener('blur',validatePhone);
 
 function validateName(){
 const name=document.getElementById('name');
-const re=/^[a-zA-z]{2,10}$/;
+const re=/^[a-zA-Z0-9]{2,10}$/;
 
 if(!re.test(name.value)){
 name.classList.add('is-invalid');
 }else
-name.classList.remove('is-ivalid');
+name.classList.remove('is-invalid');
 }
 
 function validateZip(){
@@ -20,17 +20,17 @@ const re=/^[0-9]{5}(-[0-9]{4})?$/;
 if(!re.test(zip.value)){
 zip.classList.add('is-invalid');
 }else
-zip.classList.remove('is-ivalid');
+zip.classList.remove('is-invalid');
 }
 
 function validatePassword(){
-  const name=document.getElementById('password');
-const re=/^[a-zA-Z0-9]{2,10}$/;
+  const name=document.getElementById('pass');
+const re=/^[a-zA-Z0-9]{5,10}$/;
 
-if(!re.test(password.value)){
-password.classList.add('is-invalid');
+if(!re.test(pass.value)){
+pass.classList.add('is-invalid');
 }else
-password.classList.remove('is-ivalid');
+pass.classList.remove('is-invalid');
 }
 
 function validateEmail(){
@@ -40,7 +40,7 @@ const re= /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 if(!re.test(email.value)){
 email.classList.add('is-invalid');
 }else
-email.classList.remove('is-ivalid');
+email.classList.remove('is-invalid');
 }
 
 function validatePhone(){
@@ -50,5 +50,5 @@ const re=/^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/;
 if(!re.test(phone.value)){
 phone.classList.add('is-invalid');
 }else
-phone.classList.remove('is-ivalid');
+phone.classList.remove('is-invalid');
 }

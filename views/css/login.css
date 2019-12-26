@@ -14,3 +14,7 @@ a:link {color: lightseagreen}
 .invalid-feedback{
     color: yellow;
 }
+
+#error{
+    color: yellow;
+}
