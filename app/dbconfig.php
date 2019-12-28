@@ -1,7 +1,7 @@
 <?php
-define('DB_SERVER', '40.89.160.248');
+define('DB_SERVER', 'diverville.francecentral.cloudapp.azure.com');
 define('DB_USERNAME', 'divervilleApp');
-define('DB_PASSWORD', 'diver');
+define('DB_PASSWORD', 'd!v#r');
 define('DB_NAME', 'divervilleDB');
 define('DB_PORT', '3306');
  
