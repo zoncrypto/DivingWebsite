@@ -4,7 +4,8 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    //header("location: welcome.php");
+    echo ("Already logged in!");
     exit;
 }
  
@@ -55,7 +56,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
+                        //printf ("%s (%s)\n", $username, $hashed_password);
+                        //echo ("Fetch");
+                        //if(password_verify($password, $hashed_password)){
+                        if ($password == $hashed_password){
                             // Password is correct, so start a new session
                             session_start();
                             
@@ -65,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: welcome.php");
+                            echo ("Sucess!");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not correct.";
