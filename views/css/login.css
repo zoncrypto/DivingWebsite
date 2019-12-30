@@ -1,4 +1,13 @@
-body {background-image: url('../login.jpg')}
+html,body {
+    background: url(../../images/login.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: top left;
+}
+
+
 a:link {color: lightseagreen}
 
 #signinbox{
