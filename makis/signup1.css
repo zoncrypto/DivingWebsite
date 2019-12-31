@@ -1,0 +1,9 @@
+body {
+	background: url(https://source.unsplash.com/dtCTfjTEOgg);
+	background-size: cover;
+	background-position: center;
+}
+
+html {
+	height: 100%;
+}
