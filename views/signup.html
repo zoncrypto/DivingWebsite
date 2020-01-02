@@ -1,6 +1,28 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ parent() }}
+
+<link rel="stylesheet" href="../views/css/signup.css">
+
+{% endblock %}
+
 {% block body %}
 {{ parent() }}
-<!-- Enter body html code here (Alexandra!)-->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-6 mx-auto mt-5">
+				<h1 class="text-center">Sign Up</h1>
+				<div class="dropdown text-center mt-3">
+  					<a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose your type of user:
+  					</a>
+  					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+    					<a class="dropdown-item" href="../views/signupdiver.html">Diver</a>
+    					<a class="dropdown-item" href="../views/signupdivecenter.html">Dive Center</a>
+  					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
