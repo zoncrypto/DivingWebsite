@@ -13,8 +13,6 @@ html,body {
 
 /*on same page toggle*/
 .register{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 3%;
     padding: 3%;
 }
 .register-left{
@@ -35,10 +33,13 @@ html,body {
     cursor: pointer;
 }
 .register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    background-color: rgb(25, 23, 58, 0.3);   
 }
+
 .register-left img{
     margin-top: 15%;
     margin-bottom: 5%;
