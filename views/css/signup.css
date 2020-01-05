@@ -108,3 +108,11 @@ html,body {
     margin-bottom: -15%;
     color: #495057;
 }
+
+.invalid-feedback{
+    color: yellow;
+}
+
+#error{
+    color: yellow;
+}
