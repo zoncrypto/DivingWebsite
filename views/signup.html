@@ -4,20 +4,14 @@
 {{ parent() }}
 
 <link rel="stylesheet" href="../views/css/signup.css">
-<script type="text/javascript" src="formvalidation.js"></script>
+
 
 {% endblock %}
 
 {% block body %}
 {{ parent() }}
 
-	<div class="container">
-		<div class="row">
-			<div class="col-6 mx-auto mt-5">
-				<h1 class="text-center text-white">Sign Up</h1>
-			</div>
-		</div>
-    </div>
+
     <div class="container register">
             <div class="register-right">
                 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -30,8 +24,9 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading text-white">Apply as a Diver</h3>
+                        <h3 class="register-heading text-white">Sign Up as a Diver</h3>
                         <div id="error" style="{{ style }}"> {{ error_message }} </div>
+                        <form action="" method="POST">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group input-group">
@@ -68,15 +63,15 @@
                                         <span class="input-group-text"> <i class="fas fa-at"></i> </span>
                                     </div>
                                     <input type="email" class="form-control" id="email" placeholder="Your Email *" value="" name="email" required>
-                                    <div class="invalid-feedback">
+                                    <!--<div class="invalid-feedback">
                                         Please type an email format type
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="form-group input-group mt-5">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                     </div>
-                                    <input type="text" class="form-control" id="name" placeholder="Your Username *" value="" name="username" required>
+                                    <input type="text" class="form-control" id="name" placeholder="Your Username *" name="username" required>
                                     <div class="invalid-feedback">
                                         Username must be between 2 and 10 characters
                                     </div>
@@ -96,13 +91,15 @@
                                     </div>
                                     <input type="password" class="form-control" placeholder="Repeat password *" value="" name="reppassword" required>
                                 </div>
-                                <input type="submit" class="btnRegister"  value="Register"/>
+                                <input type="submit" class="btnRegister"  value="Sign Up"/>
+                            </form>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <h3  class="register-heading text-white">Apply as a Dive Center</h3>
+                        <h3  class="register-heading text-white">Sign Up as a Dive Center</h3>
                         <div id="error" style="{{ style }}"> {{ error_message }} </div>
+                        <form action="" method="POST">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group input-group">
@@ -121,7 +118,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fas fa-phone-square-alt"></i> </span>
                                     </div>
-                                    <input type="tel" minlength="10" maxlength="10" name="phonenumber" class="form-control" id="phone" placeholder="Your Phone Number *" value="" required>
+                                    <input type="tel" minlength="10" maxlength="10" name="phonenumber" class="form-control" id="centerphone" placeholder="Your Phone Number *" value="" required>
                                     <div class="invalid-feedback">
                                         Please type a valid phone number
                                     </div>
@@ -133,15 +130,15 @@
                                         <span class="input-group-text"> <i class="fas fa-at"></i> </span>
                                     </div>
                                     <input type="email" class="form-control" id="email" placeholder="Email *" value="" name="email" required>
-                                    <div class="invalid-feedback">
+                                    <!--<div class="invalid-feedback">
                                         Please type an email format type
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="form-group input-group mt-5">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                     </div>
-                                    <input type="text" class="form-control" id="name" placeholder="Your Username *" value="" name="username" required>
+                                    <input type="text" class="form-control" id="centeruname" placeholder="Your Username *" name="username" required>
                                     <div class="invalid-feedback">
                                         Username must be between 2 and 10 characters
                                     </div>
@@ -150,7 +147,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                     </div>
-                                    <input type="password" class="form-control" id="pass" placeholder="Your Password *" value="" name="password" required>
+                                    <input type="password" class="form-control" id="centerpass" placeholder="Your Password *" value="" name="password" required>
                                     <div class="invalid-feedback">
                                         Enter a valid password. 5-10 characters [lowercase, uppercase, number]
                                     </div>
@@ -161,7 +158,8 @@
                                     </div>
                                     <input type="password" class="form-control" placeholder="Repeat password *" value="" name="reppassword" required>
                                 </div>
-                                <input type="submit" class="btnRegister"  value="Register"/>
+                                <input type="submit" class="btnRegister"  value="Sign Up"/>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -169,4 +167,7 @@
             </div>
 
     </div>
+
+
+    <script src="../views/formvalidation.js"></script>
 {% endblock %}
