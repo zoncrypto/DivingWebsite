@@ -4,6 +4,7 @@
 {{ parent() }}
 
 <link rel="stylesheet" href="../views/css/index.css">
+<link rel="stylesheet" href="../views/css/caleandar.css">
 
 
 {% endblock %}
@@ -67,6 +68,8 @@
     </div>
   </section>
   </br>
+  <div class="row">
+  <div class="col-md-12 col-lg-8 col-xl-8 col-sm-12 col-12">
   <section class="dive-spots">
     <div class="container">
       <div class="card dive-spot">
@@ -82,7 +85,7 @@
           </div>
         </div>
       </div>
-    </br>
+      </br>
       <div class="card dive-spot">
         <div class="row">
           <div class="col-6">
@@ -156,6 +159,26 @@
       </br>
     </div>
   </section>
+  </div>
+  <section class="events-calendar col-md-12 col-lg-4 col-xl-4 col-sm-12 col-12">
+    <div id="caleandar">
+
+    </div>
+  </section>
+  </div>
 </div>
 
+<script src="../views/caleandar.js"></script>
+<script>
+  //https://www.cssscript.com/create-simple-event-calendar-javascript-caleandar-js/
+  var events = [
+    { 'Date': new Date(2019, 11, 24), 'Title': 'Doctor appointment at 3:25pm.' },
+    { 'Date': new Date(2019, 11, 29), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com' },
+    { 'Date': new Date(2019, 11, 31), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts' },
+  ];
+  var settings = {};
+  var element = document.getElementById('caleandar');
+  caleandar(element, events, settings);
+
+</script>
 {% endblock %}

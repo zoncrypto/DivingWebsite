@@ -30,6 +30,7 @@ html,body {
 
 .carousel-item img {
     width: inherit;
+    height: inherit;
 }
 
 .myIndexHead{
@@ -103,5 +104,14 @@ html,body {
 .dive-spots
 {
     max-height: 20rem;
-    overflow: scroll;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.events-calendar{
+    text-align: -webkit-center;
 }
