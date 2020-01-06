@@ -59,6 +59,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
+                            // Search if he is a diver or dive center
+                            // Prepare a select statement
+                            $sql = "SELECT user_id FROM divers WHERE user_id = ?";
+                            
+                            if($stmt = mysqli_prepare($link, $sql)){
+                                // Bind variables to the prepared statement as parameters
+                                mysqli_stmt_bind_param($stmt, "s", $param_id);
+                                
+                                // Set parameters
+                                $param_id = $id;
+                                
+                                // Attempt to execute the prepared statement
+                                if(mysqli_stmt_execute($stmt)){
+                                    /* store result */
+                                    mysqli_stmt_store_result($stmt);
+                                    
+                                    if(mysqli_stmt_num_rows($stmt) == 1){
+                                        echo "Sucess! Diver";
+                                    } else{
+                                        echo "Sucess! Dive Center";
+                                    }
+                                } else{
+                                    echo "Oops! Something went wrong. Validate diver or dive center.";
+                                }
+                            }
                             // Redirect user to welcome page
                             echo ("Sucess!");
                         } else{
