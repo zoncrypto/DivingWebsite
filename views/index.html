@@ -7,15 +7,9 @@
 
 
 {% endblock %}
-   
+
 {% block body %}
 {{ parent() }}
-<section class="myIndexHead">
-  <div id="index-header">
-    Find your next adventure
-  </div>
-  <h3>Search scheduled dive trips!</h3>
-</section>
 
 <div id="background-carousel">
   <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -26,43 +20,142 @@
     </ul>
     <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
-        <img src="../images/dive1.jpg" class="d-block w-100" alt="...">
+        <img src="../images/dive1.jpg" alt="...">
       </div>
-      <div class="carousel-item" >
-        <img src="../images/dive2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-item">
+        <img src="../images/dive2.jpg" alt="...">
       </div>
-      <div class="carousel-item" >
-        <img src="../images/dive3.jpg" class="d-block w-100" alt="...">
-      </div>  
+      <div class="carousel-item">
+        <img src="../images/dive3.jpg" alt="...">
+      </div>
     </div>
   </div>
 </div>
-<section class="search-sec">
-  <div class="container">
+<div class="container">
+  <section class="myIndexHead">
+    <div id="index-header">
+      Find your next adventure
+    </div>
+    <h3>Search scheduled dive trips!</h3>
+  </section>
+  </br>
+  <section class="search-sec">
+    <div class="container">
       <form action="#" method="post" novalidate="novalidate">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="row">
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <input type="text" class="form-control search-slt" placeholder="Enter Dive Spot">
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <input type="text" class="form-control search-slt" placeholder="Enter Dive Center">
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <input type="text" class="search-date" placeholder="Search by Date (From)" onfocus="(this.type='date')" onblur="(this.type='text')" >
-                        <input type="text" class="search-date" placeholder="Search by Date (To)" onfocus="(this.type='date')" onblur="(this.type='text')" >
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <button type="button" class="btn btn-danger wrn-btn">Search</button>
-                      </div>
-                  </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <input type="text" class="form-control search-slt" placeholder="Enter Dive Spot">
               </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <input type="text" class="form-control search-slt" placeholder="Enter Dive Center">
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <input type="text" class="search-date" placeholder="Search by Date (From)" onfocus="(this.type='date')"
+                  onblur="(this.type='text')">
+                <input type="text" class="search-date" placeholder="Search by Date (To)" onfocus="(this.type='date')"
+                  onblur="(this.type='text')">
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+              </div>
+            </div>
           </div>
+        </div>
       </form>
-  </div>
-</section>
-
-
+    </div>
+  </section>
+  </br>
+  <section class="dive-spots">
+    <div class="container">
+      <div class="card dive-spot">
+        <div class="row">
+          <div class="col-6">
+            <img src="../images/Spot1.jpg" alt="Spot 1" style="width:100%">
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h4 class="card-title"><a href="#">Spot 1</a></h4>
+              <p class="card-text">Some example text some example text. Some example text some example text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </br>
+      <div class="card dive-spot">
+        <div class="row">
+          <div class="col-6">
+            <img src="../images/Spot2.jpg" alt="Spot 2" style="width:100%">
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h4 class="card-title"><a href="#">Spot 2</a></h4>
+              <p class="card-text">Some example text some example text. Some example text some example text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="card dive-spot">
+        <div class="row">
+          <div class="col-6">
+            <img src="../images/Spot3.jpg" alt="Spot 3" style="width:100%">
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h4 class="card-title"><a href="#">Spot 3</a></h4>
+              <p class="card-text">Some example text some example text. Some example text some example text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="card dive-spot">
+        <div class="row">
+          <div class="col-6">
+            <img src="../images/Spot4.jpg" alt="Spot 4" style="width:100%">
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h4 class="card-title"><a href="#">Spot 4</a></h4>
+              <p class="card-text">Some example text some example text. Some example text some example text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="card dive-spot">
+        <div class="row">
+          <div class="col-6">
+            <img src="../images/Spot5.jpg" alt="Spot 5" style="width:100%">
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h4 class="card-title"><a href="#">Spot 5</a></h4>
+              <p class="card-text">Some example text some example text. Some example text some example text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="card dive-spot">
+        <div class="row">
+          <div class="col-6">
+            <img src="../images/Spot6.jpg" alt="Spot 6" style="width:100%">
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h4 class="card-title"><a href="#">Spot 6</a></h4>
+              <p class="card-text">Some example text some example text. Some example text some example text.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+    </div>
+  </section>
+</div>
 
 {% endblock %}
