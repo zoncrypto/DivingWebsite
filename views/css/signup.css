@@ -115,4 +115,5 @@ html,body {
 
 #error{
     color: yellow;
+    text-align: center;
 }

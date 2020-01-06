@@ -20,19 +20,10 @@ $username_err = $password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
+
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
     
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
     
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
@@ -58,8 +49,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if(mysqli_stmt_fetch($stmt)){
                         //printf ("%s (%s)\n", $username, $hashed_password);
                         //echo ("Fetch");
-                        //if(password_verify($password, $hashed_password)){
-                        if ($password == $hashed_password){
+                        if(password_verify($password, $hashed_password)){
+                        //if ($password == $hashed_password){
                             // Password is correct, so start a new session
                             session_start();
                             
