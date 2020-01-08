@@ -4,9 +4,14 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    //header("location: welcome.php");
-    echo ("Already logged in!");
-    exit;
+    if ($_SESSION["usertype"] === "diver"){
+        //header("location: welcome.php");
+        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"] ]); 
+        exit;
+    }else{
+        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"] ]); 
+        exit;
+    }
 }
  
 // Include config file
@@ -20,19 +25,10 @@ $username_err = $password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
+
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
     
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
     
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
@@ -58,8 +54,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if(mysqli_stmt_fetch($stmt)){
                         //printf ("%s (%s)\n", $username, $hashed_password);
                         //echo ("Fetch");
-                        //if(password_verify($password, $hashed_password)){
-                        if ($password == $hashed_password){
+                        if(password_verify($password, $hashed_password)){
+                        //if ($password == $hashed_password){
                             // Password is correct, so start a new session
                             session_start();
                             
@@ -68,6 +64,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
+                            // Search if he is a diver or dive center
+                            // Prepare a select statement
+                            $sql = "SELECT user_id FROM divers WHERE user_id = ?";
+                            
+                            if($stmt = mysqli_prepare($link, $sql)){
+                                // Bind variables to the prepared statement as parameters
+                                mysqli_stmt_bind_param($stmt, "s", $param_id);
+                                
+                                // Set parameters
+                                $param_id = $id;
+                                
+                                // Attempt to execute the prepared statement
+                                if(mysqli_stmt_execute($stmt)){
+                                    /* store result */
+                                    mysqli_stmt_store_result($stmt);
+                                    
+                                    if(mysqli_stmt_num_rows($stmt) == 1){
+                                        echo "Sucess! Diver";
+                                        $_SESSION["usertype"] = "diver";
+                                    } else{
+                                        echo "Sucess! Dive Center";
+                                        $_SESSION["usertype"] = "divecenter";
+                                    }
+                                } else{
+                                    echo "Oops! Something went wrong. Validate diver or dive center.";
+                                }
+                            }
                             // Redirect user to welcome page
                             echo ("Sucess!");
                         } else{

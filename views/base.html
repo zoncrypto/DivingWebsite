@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     {% block head %}
@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://kit.fontawesome.com/8643716bca.js" crossorigin="anonymous"></script>  <!-- makis added script for fontawesome to function properly -->
 
     <title>{% block title %}Diverville{% endblock %}</title>
     {% endblock %}
@@ -28,21 +29,21 @@
    </button>
    <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav ml-auto">
-       <li class="nav-item active">
+       <li class="{{ home }}">
          <a class="nav-link" href="../app/index.php">Home <span class="sr-only">(current)</span></a>
        </li>
-       <li class="nav-item">
+       <li class="{{ services }}">
          <a class="nav-link" href="../app/services.php">Services</a>
        </li>
        
-       <li class="nav-item">
+       <li class="{{ aboutus }}">
          <a class="nav-link" href="../app/aboutus.php">About Us</a>
        </li>
-       <li class="nav-item">
+       <li class="{{ contactus }}" id="contactus">
          <a class="nav-link" href="../app/contactus.php">Contact Us</a>
        </li>
  
-      <li class="nav-item">
+      <li class="{{ login }}" id="login">
          <a class="nav-link" href="../app/login.php">Login</a>
        </li>
      </ul>
