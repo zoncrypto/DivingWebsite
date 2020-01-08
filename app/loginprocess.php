@@ -4,9 +4,14 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    //header("location: welcome.php");
-    echo ("Already logged in!");
-    exit;
+    if ($_SESSION["usertype"] === "diver"){
+        //header("location: welcome.php");
+        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"] ]); 
+        exit;
+    }else{
+        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"] ]); 
+        exit;
+    }
 }
  
 // Include config file
@@ -77,8 +82,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     
                                     if(mysqli_stmt_num_rows($stmt) == 1){
                                         echo "Sucess! Diver";
+                                        $_SESSION["usertype"] = "diver";
                                     } else{
                                         echo "Sucess! Dive Center";
+                                        $_SESSION["usertype"] = "divecenter";
                                     }
                                 } else{
                                     echo "Oops! Something went wrong. Validate diver or dive center.";
