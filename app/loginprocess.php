@@ -1,4 +1,5 @@
 <?php
+require_once "../app/twig.php";
 // Initialize the session
 session_start();
  
@@ -6,17 +7,25 @@ session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     if ($_SESSION["usertype"] === "diver"){
         //header("location: welcome.php");
-        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"] ]); 
+        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
+        'services' => "nav-item", 
+        'contactus' => "nav-item", 
+        'aboutus' => "nav-item",
+        'login' => "nav-item" ]); 
         exit;
     }else{
-        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"] ]); 
+        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
+        'services' => "nav-item", 
+        'contactus' => "nav-item", 
+        'aboutus' => "nav-item",
+        'login' => "nav-item" ]); 
         exit;
     }
 }
  
 // Include config file
 require_once "../app/dbconfig.php";
-require_once "../app/twig.php";
+
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -57,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         if(password_verify($password, $hashed_password)){
                         //if ($password == $hashed_password){
                             // Password is correct, so start a new session
-                            session_start();
+
                             
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
@@ -81,18 +90,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     mysqli_stmt_store_result($stmt);
                                     
                                     if(mysqli_stmt_num_rows($stmt) == 1){
-                                        echo "Sucess! Diver";
                                         $_SESSION["usertype"] = "diver";
+                                        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
+                                        'services' => "nav-item", 
+                                        'contactus' => "nav-item", 
+                                        'aboutus' => "nav-item",
+                                        'login' => "nav-item" ]); 
                                     } else{
-                                        echo "Sucess! Dive Center";
                                         $_SESSION["usertype"] = "divecenter";
+                                        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
+                                        'services' => "nav-item", 
+                                        'contactus' => "nav-item", 
+                                        'aboutus' => "nav-item",
+                                        'login' => "nav-item" ]); 
                                     }
                                 } else{
                                     echo "Oops! Something went wrong. Validate diver or dive center.";
                                 }
                             }
-                            // Redirect user to welcome page
-                            echo ("Sucess!");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not correct.";
