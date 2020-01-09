@@ -1,4 +1,5 @@
-<?php 
+<?php
+/* 
 require_once '../app/twig.php';
 
 session_start();
@@ -20,4 +21,6 @@ echo $twig->render('services.html', ['home' => "nav-item",
 'contactus' => "nav-item", 
 'aboutus' => "nav-item",
 'login' => "nav-item"]); 
+*/
+phpinfo();
 ?>
