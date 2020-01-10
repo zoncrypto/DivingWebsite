@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_name('mysession');  
 session_start();
 require_once '../app/twig.php';
 // Check if the user is already logged in, if yes then redirect him to welcome page

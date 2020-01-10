@@ -1,5 +1,5 @@
 <?php
-
+session_name('mysession'); 
 // Initialize the session
 session_start();
 require_once "../app/twig.php";
