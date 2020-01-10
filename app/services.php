@@ -1,9 +1,10 @@
 <?php
 /* 
 require_once '../app/twig.php';
-
-session_start();
 */
+session_name('mysession'); 
+session_start();
+
 print_r($_SESSION);
 // Check if the user is already logged in, if yes then redirect him to welcome page
 /*
