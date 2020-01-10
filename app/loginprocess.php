@@ -3,22 +3,15 @@ session_name('mysession');
 // Initialize the session
 session_start();
 require_once "../app/twig.php";
+require_once '../app/random_spots_index.php';
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     if ($_SESSION["usertype"] === "diver"){
         //header("location: welcome.php");
-        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
-        'services' => "nav-item", 
-        'contactus' => "nav-item", 
-        'aboutus' => "nav-item",
-        'login' => "nav-item" ]); 
+        require '../app/render_diver_main.php';
         exit;
     }else{
-        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
-        'services' => "nav-item", 
-        'contactus' => "nav-item", 
-        'aboutus' => "nav-item",
-        'login' => "nav-item" ]); 
+        require '../app/render_divecenter_main.php';
         exit;
     }
 }
@@ -91,18 +84,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     
                                     if(mysqli_stmt_num_rows($stmt) == 1){
                                         $_SESSION["usertype"] = "diver";
-                                        echo $twig->render('welcomediver.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
-                                        'services' => "nav-item", 
-                                        'contactus' => "nav-item", 
-                                        'aboutus' => "nav-item",
-                                        'login' => "nav-item" ]); 
+                                        require '../app/render_diver_main.php';
                                     } else{
                                         $_SESSION["usertype"] = "divecenter";
-                                        echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
-                                        'services' => "nav-item", 
-                                        'contactus' => "nav-item", 
-                                        'aboutus' => "nav-item",
-                                        'login' => "nav-item" ]); 
+                                        require '../app/render_divecenter_main.php';
                                     }
                                 } else{
                                     echo "Oops! Something went wrong. Validate diver or dive center.";
