@@ -7,7 +7,7 @@ require_once '../app/twig.php';
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         //header("location: welcome.php");
 
-        echo $twig->render('services.html', ['name' => $_SESSION["username"], 'home' => "nav-item", 
+        echo $twig->render('services.html', ['user' => $_SESSION["username"], 'home' => "nav-item", 
         'services' => "nav-item active", 
         'contactus' => "nav-item", 
         'aboutus' => "nav-item",

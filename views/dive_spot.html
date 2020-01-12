@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ parent() }}
+<meta name="viewport" content="initial-scale=1.0,
+width=device-width" />
+<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />  
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+<script type="text/javascript" src='../js-examples-rendering-helpers/iframe-height.js'></script>
+<link rel="stylesheet" href="../views/css/dive_spot.css">
+
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+    <section class="divespotHead">
+        <div id="index-header">
+          Dive spot : {{ spot_name }}
+        </div>
+        <h2>Depth : {{ depth }} meters</h2>
+        <br>
+        <h2>Type: {{ type }}</h2>
+    </section>
+    <section>
+        <div style="width: 640px; height: 480px" id="map"></div>
+        <script type="text/javascript"> 
+            var spotLat = parseFloat("{{ lat }}");
+            var spotLng = parseFloat("{{ lng }}");
+        </script> 
+    </section>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- The map.js uses the spotLat, spotLng values assigned above to generate the map-->
+    <script type="text/javascript" src='../views/map.js'></script>
+   
+{% endblock %}
