@@ -12,7 +12,7 @@ function moveMapTo(map){
   }
 
 function addMarkersToMap(map) {
-    var Marker = new H.map.Marker({lat:38.32094, lng:21.9709});
+    var Marker = new H.map.Marker({lat:spotLat, lng:spotLng});
     map.addObject(Marker);
 }
   
