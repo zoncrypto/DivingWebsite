@@ -4,16 +4,14 @@
 {{ parent() }}
 <meta name="viewport" content="initial-scale=1.0,
 width=device-width" />
-<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
-type="text/javascript" charset="utf-8"></script>
-<script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
-type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />  
+
+
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 <script type="text/javascript" src='../js-examples-rendering-helpers/iframe-height.js'></script>
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />  
 <link rel="stylesheet" href="../views/css/dive_spot.css">
 
 {% endblock %}
@@ -36,6 +34,26 @@ type="text/javascript" charset="utf-8"></script>
             var spotLng = parseFloat("{{ lng }}");
         </script> 
     </section>
+    
+    {% if user is defined %}
+    <form method="POST" action="upload_spot_image.php" enctype="multipart/form-data">
+        <input type="hidden" name="max_size" value="3145728">
+        <input type="hidden" name="spot_id" value="{{ id }}">
+        <input type="hidden" name="spot_name" value="{{ spot_name }}">
+        <input type="hidden" name="depth" value="{{ depth }}">
+        <input type="hidden" name="spot_type" value="{{ type }}">
+        <input type="hidden" name="posLat" value="{{ lat }}">
+        <input type="hidden" name="posLng" value="{{ lng }}">
+        <div>
+            <input type="file" name="image" required>
+        </div>
+        <div>
+            <button type="submit" name="upload">Upload</button>
+        </div>
+    </form>
+    <br>
+    <div id="error" style="{{ style }}"> {{ error_message }} </div>
+    {% endif %}
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
