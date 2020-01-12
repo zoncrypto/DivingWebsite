@@ -45,9 +45,9 @@
          <a class="nav-link" href="../app/contactus.php">Contact Us</a>
        </li>
        
-        {% if name is defined %}
+        {% if user is defined %}
         <li class="nav-item dropdown">
-          <a id="navname" class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">{{ name }}  </a>
+          <a id="navname" class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">{{ user }}  </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"> Your Account</a></li>
             <li><a class="dropdown-item" href="../app/logout.php"> Logout </a></li>

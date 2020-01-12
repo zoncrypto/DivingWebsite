@@ -1,6 +1,6 @@
 <?php
 require_once '../app/twig.php';
-echo $twig->render('welcomedivecenter.html', ['name' => $_SESSION["username"], 'home' => "nav-item active", 
+echo $twig->render('welcomedivecenter.html', ['user' => $_SESSION["username"], 'home' => "nav-item active", 
 'services' => "nav-item", 
 'contactus' => "nav-item", 
 'aboutus' => "nav-item",
