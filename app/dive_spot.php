@@ -30,7 +30,11 @@ if($stmt = mysqli_prepare($link, $sql)){
             if(mysqli_stmt_fetch($stmt)){
                 //printf ("%s (%s)\n", $username, $hashed_password);
                 //echo ("Fetch");
-                echo $twig->render('dive_spot.html', ['id' => $id, 'spot_name' => $name, 'depth' => $depth, 'type' => $type, 'lat' => $posLat, 'lng' => $posLng, 'user' => $_SESSION['username']]);
+                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                    echo $twig->render('dive_spot.html', ['id' => $id, 'spot_name' => $name, 'depth' => $depth, 'type' => $type, 'lat' => $posLat, 'lng' => $posLng, 'user' => $_SESSION['username']]);
+                } else{
+                    echo $twig->render('dive_spot.html', ['id' => $id, 'spot_name' => $name, 'depth' => $depth, 'type' => $type, 'lat' => $posLat, 'lng' => $posLng]);
+                }
             } else {
                 echo "Something went wrong with the variables of spot.";
             }
