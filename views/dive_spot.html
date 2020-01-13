@@ -4,16 +4,14 @@
 {{ parent() }}
 <meta name="viewport" content="initial-scale=1.0,
 width=device-width" />
-<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
-type="text/javascript" charset="utf-8"></script>
-<script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
-type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />  
+
+
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
 <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 <script type="text/javascript" src='../js-examples-rendering-helpers/iframe-height.js'></script>
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />  
 <link rel="stylesheet" href="../views/css/dive_spot.css">
 
 {% endblock %}
@@ -36,10 +34,70 @@ type="text/javascript" charset="utf-8"></script>
             var spotLng = parseFloat("{{ lng }}");
         </script> 
     </section>
+
+    
+    <div class="row">
+    <section class="col-8 diveEventPhoto">
+        <!--<h3>Photos of dive spot</h3> -->
+        <!-- Container for the image gallery -->
+        <div class="container">
+    
+            <!-- Full-width images with number text -->
+            <!-- each name of image will render a different div with specific path for the carousel -->
+            {% for item in image_names %}
+                <div class="mySlides">
+                    <div class="numbertext"></div>
+                    <img src="../spotimages/{{ item }}">
+                </div>
+            {% endfor %}
+
+    
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    
+            <!-- Thumbnail images -->
+            <div class="row">
+                {% set i = 1  %}
+                {% for item in image_names %}
+                <div class="column">
+                    <img class="cursor" src="../spotimages/{{ item }}"  onclick="currentSlide('{{ i }}')"
+                        alt="{{ item }}">
+                </div>
+                {% set i = i + 1 %}
+                {% endfor %}
+            </div>
+        </div>
+        {% if user is defined %}
+        <form method="POST" action="upload_spot_image.php" enctype="multipart/form-data">
+            <input type="hidden" name="max_size" value="3145728">
+            <input type="hidden" name="spot_id" value="{{ id }}">
+            <input type="hidden" name="spot_name" value="{{ spot_name }}">
+            <input type="hidden" name="depth" value="{{ depth }}">
+            <input type="hidden" name="spot_type" value="{{ type }}">
+            <input type="hidden" name="posLat" value="{{ lat }}">
+            <input type="hidden" name="posLng" value="{{ lng }}">
+            <div>
+                <input type="file" name="image" required>
+            </div>
+            <div>
+                <button type="submit" name="upload">Upload</button>
+            </div>
+        </form>
+        <br>
+        <div id="error" style="{{ style }}"> {{ error_message }} </div>
+        {% else %}
+            <div id='upload_text'>Log in to upload images!</div>
+        {% endif %}
+    </section>
+    </div>
+
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- The map.js uses the spotLat, spotLng values assigned above to generate the map-->
     <script type="text/javascript" src='../views/map.js'></script>
+    <script type="text/javascript" src='../views/slider.js'></script>
+
    
 {% endblock %}
