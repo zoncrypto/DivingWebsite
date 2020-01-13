@@ -28,19 +28,20 @@ require_once "../app/dbconfig.php";
   if (isset($_POST['upload'])) {
   	// Get image name
       $image = $_FILES['image']['name'];
+      $strip_image = str_replace(' ', '_', $image);
       $size= $_FILES['image']['size'];
 
   	// image file directory
-  	$target = "../spotimages/".basename($image);
+  	$target = "../spotimages/".basename($strip_image);
 
       
 
-    if (isset($image)) {
+    if (isset($strip_image)) {
         echo "1";
 
         if ($size < $max_size) {
             if (copy($_FILES['image']['tmp_name'], $target)) {
-                $sql = "INSERT INTO images (image, divespotID) VALUES ('$image', '$id')";
+                $sql = "INSERT INTO images (image, divespotID) VALUES ('$strip_image', '$id')";
                 // execute query
                 mysqli_query($link, $sql);
                 $msg = "Image uploaded successfully";
