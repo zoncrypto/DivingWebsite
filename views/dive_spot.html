@@ -79,6 +79,7 @@ width=device-width" />
             <input type="hidden" name="spot_type" value="{{ type }}">
             <input type="hidden" name="posLat" value="{{ lat }}">
             <input type="hidden" name="posLng" value="{{ lng }}">
+            <input type="hidden" name="spot_images" value="{{ string_image_names }}">
             <div>
                 <input type="file" name="image" required>
             </div>
@@ -89,7 +90,7 @@ width=device-width" />
         <br>
         <div id="error" style="{{ style }}"> {{ error_message }} </div>
         {% else %}
-        <div id='upload_text'>Log in to upload images!</div>
+        <div id='upload_text'><h4>Log in to upload images!</h4></div>
         {% endif %}
     </section>
 </div>

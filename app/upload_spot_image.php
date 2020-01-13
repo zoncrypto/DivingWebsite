@@ -10,6 +10,7 @@ $depth  = $_POST['depth'];
 $type  = $_POST['spot_type'];
 $posLat = $_POST['posLat'];
 $posLng  = $_POST['posLng'];
+$spot_image_names = unserialize(base64_decode($_POST["spot_images"]));;
 // keep spot variables - end//
 
 
