@@ -37,11 +37,14 @@ if($stmt = mysqli_prepare($link, $sql)){
                 if ($result2 = mysqli_query($link, $sql2)) {
                     // Fetch each row with the image name of spot images
                             
-                     $spot_image_names = []; 
+                    $spot_image_names = []; 
                     while ($row2 = mysqli_fetch_row($result2)) {
                          array_push($spot_image_names ,$row2[0]);                           
                     }
                     mysqli_free_result($result2);
+                    $string_image_names = base64_encode(serialize($spot_image_names));
+                    //echo $string_image_names;
+                    //exit;
                 }
                 //print_r ($spot_image_names);
                 //exit;

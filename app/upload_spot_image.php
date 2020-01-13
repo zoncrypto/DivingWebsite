@@ -10,12 +10,12 @@ $depth  = $_POST['depth'];
 $type  = $_POST['spot_type'];
 $posLat = $_POST['posLat'];
 $posLng  = $_POST['posLng'];
+$spot_image_names = unserialize(base64_decode($_POST["spot_images"]));;
 // keep spot variables - end//
 
 
 
 $max_size = $_POST['max_size'];
-echo $id;
 
 
 // Include config file
@@ -37,7 +37,6 @@ require_once "../app/dbconfig.php";
       
 
     if (isset($strip_image)) {
-        echo "1";
 
         if ($size < $max_size) {
             if (copy($_FILES['image']['tmp_name'], $target)) {
@@ -46,13 +45,11 @@ require_once "../app/dbconfig.php";
                 mysqli_query($link, $sql);
                 $msg = "Image uploaded successfully";
                 $style = "visibility: visible;";
-                echo "2";
                 require '../app/render_dive_spot.php';
                 
             }else{
                 $msg = "Failed to upload image";
                 $style = "visibility: visible;";
-                echo "3";
                 require '../app/render_dive_spot.php';
             }
         }
@@ -60,7 +57,6 @@ require_once "../app/dbconfig.php";
         {
             $msg = "The size of the file must be less than 3MB in order to be uploaded.";
             $style = "visibility: visible;";
-            echo "4";
             require '../app/render_dive_spot.php';	
         }
     }
