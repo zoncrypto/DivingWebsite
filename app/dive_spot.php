@@ -30,6 +30,21 @@ if($stmt = mysqli_prepare($link, $sql)){
             if(mysqli_stmt_fetch($stmt)){
                 //printf ("%s (%s)\n", $username, $hashed_password);
                 //echo ("Fetch");
+
+                //select all images names for this divespot
+                 $sql2 = "SELECT image FROM images  WHERE divespotID = $id;";
+                            
+                if ($result2 = mysqli_query($link, $sql2)) {
+                    // Fetch each row with the image name of spot images
+                            
+                     $spot_image_names = []; 
+                    while ($row2 = mysqli_fetch_row($result2)) {
+                         array_push($spot_image_names ,$row2[0]);                           
+                    }
+                    mysqli_free_result($result2);
+                }
+                //print_r ($spot_image_names);
+                //exit;
                 $msg = "";
                 $style = "visibility: hidden;";
                 require '../app/render_dive_spot.php';
