@@ -1,6 +1,40 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ parent() }}
+
+<link rel="stylesheet" href="../views/css/contact.css">
+
+{% endblock %}
+
 {% block body %}
 {{ parent() }}
+
+ <div class="wrapper">
+		<div class="contact-form">
+			<div class="title"> Contact Form</div>
+
+			<div class="input-fields">
+					<div class="items">
+						<label for="name" class="label">name</label>
+						<input id="name" type="text" class="input">
+					</div>
+					<div class="items">
+						<label for="email" class="label">email</label>
+						<input id="email" type="text" class="input">
+					</div>
+					<div class="items">
+						<label for="subject" class="label">subject</label>
+						<input id="subject" type="text" class="input">
+					</div>
+					<div class="items">
+						<label for="msg" class="label">message</label>
+						<textarea id="msg" class="text-area"></textarea>
+					</div>
+			</div>
+				
+			<div class="button1">send</div>
+		</div>
+</div>
 
 {% endblock %}

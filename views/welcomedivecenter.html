@@ -3,11 +3,49 @@
 
 {% block head %}
 {{ parent() }}
-<!--
-<link rel="stylesheet" href="">
--->
+
+<link rel="stylesheet" href="../views/css/divecenter.css">
+
 {% endblock %}
 
+{% block body %}
+{{ parent() }}
+
+<button class="open-button" onclick="openForm()">Create Event</button>
+
+ <div class="form-popup" id="myForm">
+  <form action="create_event.php" method="POST" class="form-container">
+    <h1>Event Details</h1>
+
+    <label for="name"><strong>Name</strong></label>
+    <input type="text" placeholder="Enter Name" name="name" required>
+
+    <label for="date"><strong>Date</strong></label>
+    <input placeholder="Enter Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="date" required>
+
+    <label for="maxdivers"><strong>Number of Divers<strong></label>
+    <input type="text" placeholder="Enter number of divers" name="maxdivers" required>
+
+    <label for="place"><strong>Dive Spot</strong></label>
+    <input type="text" placeholder="Enter Dive Spot" name="divespot" required>
+
+    <button type="submit" class="btn" value="Send">Submit</button>
+    <input type="reset" value="Clear" class="mb-3">
+    <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div> 
+
+<script>
+function openForm() {
+  	document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+{% endblock %}
 
     
 
