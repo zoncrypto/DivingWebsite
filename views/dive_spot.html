@@ -95,12 +95,13 @@ width=device-width" />
     </section>
 </div>
 
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% endblock %}
+{% block scripts %}
+  {{ parent() }}
 <!-- The map.js uses the spotLat, spotLng values assigned above to generate the map-->
 <script type="text/javascript" src='../views/map.js'></script>
 <script type="text/javascript" src='../views/slider.js'></script>
-
-
 {% endblock %}
+
+
+

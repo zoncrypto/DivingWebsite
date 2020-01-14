@@ -168,6 +168,9 @@
 
     </div>
 
-
-    <script src="../views/formvalidation.js"></script>
-{% endblock %}
+    {% endblock %}
+    {% block scripts %}
+        {{ parent() }}
+        <script src="../views/formvalidation.js"></script>
+    {% endblock %}
+    

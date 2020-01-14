@@ -50,8 +50,10 @@
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-    <script src="../views/formvalidation.js"></script>
     {% endblock %}
+    {% block scripts %}
+      {{ parent() }}
+      <script src="../views/formvalidation.js"></script>
+    {% endblock %}
+    
+    
