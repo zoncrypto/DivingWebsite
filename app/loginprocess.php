@@ -84,9 +84,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     
                                     if(mysqli_stmt_num_rows($stmt) == 1){
                                         $_SESSION["usertype"] = "diver";
+                                        require '../app/event_calendar.php';
                                         require '../app/render_diver_main.php';
                                     } else{
                                         $_SESSION["usertype"] = "divecenter";
+                                        require '../app/event_calendar.php';
                                         require '../app/render_divecenter_main.php';
                                     }
                                 } else{

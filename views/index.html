@@ -42,24 +42,15 @@
   </br>
   <section class="search-sec">
     <div class="container">
-      <form action="#" method="post" novalidate="novalidate">
+      <form action="../app/dive_spot.php" method="POST" novalidate="novalidate">
         <div class="row">
           <div class="col-lg-12">
             <div class="row">
               <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <input type="text" class="form-control search-slt" placeholder="Enter Dive Spot">
+                <input type="text" class="form-control search-slt" placeholder="Enter Dive Spot" name='name'>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <input type="text" class="form-control search-slt" placeholder="Enter Dive Center">
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <input type="text" class="search-date" placeholder="Search by Date (From)" onfocus="(this.type='date')"
-                  onblur="(this.type='text')">
-                <input type="text" class="search-date" placeholder="Search by Date (To)" onfocus="(this.type='date')"
-                  onblur="(this.type='text')">
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                <button type="submit" class="btn btn-danger wrn-btn">Search</button>
               </div>
             </div>
           </div>
@@ -104,6 +95,7 @@
       </br>
       <div class="card dive-spot">
         <div class="row">
+          <!--
           <div class="col-6">
             <img src="../spotimages/{{ img3 }}" alt="Spot 3" style="width:100%">
           </div>
@@ -112,57 +104,14 @@
               <h4 class="card-title"><a href="#" onclick="location.href='../app/dive_spot.php?name={{ name3 }}'">{{ name3 }}</a></h4>
               <p class="card-text">{{ depth3 }} meters</p>
               <p class="card-text">{{ type3 }} </p>
-            </div>
+            </div>            
           </div>
+          -->
+          {% for item in event_calendar %}
+            {{ item[0] }}
+          {% endfor %}
         </div>
       </div>
-      <!--
-      </br>
-      <div class="card dive-spot">
-        <div class="row">
-          <div class="col-6">
-            <img src="../images/Spot4.jpg" alt="Spot 4" style="width:100%">
-          </div>
-          <div class="col-6">
-            <div class="card-body">
-              <h4 class="card-title"><a href="#">Spot 4</a></h4>
-              <p class="card-text">Some example text some example text. Some example text some example text.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </br>
-      <div class="card dive-spot">
-        <div class="row">
-          <div class="col-6">
-            <img src="../images/Spot5.jpg" alt="Spot 5" style="width:100%">
-          </div>
-          <div class="col-6">
-            <div class="card-body">
-              <h4 class="card-title"><a href="#">Spot 5</a></h4>
-              <p class="card-text">Some example text some example text. Some example text some example text.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </br>
-      <div class="card dive-spot">
-        <div class="row">
-          <div class="col-6">
-            <img src="../images/Spot6.jpg" alt="Spot 6" style="width:100%">
-          </div>
-          <div class="col-6">
-            <div class="card-body">
-              <h4 class="card-title"><a href="#">Spot 6</a></h4>
-              <p class="card-text">Some example text some example text. Some example text some example text.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </br>
-    </div>
-    -->
   </section>
   </div>
   <section class="events-calendar col-md-12 col-lg-4 col-xl-4 col-sm-12 col-12">
@@ -174,18 +123,34 @@
 </div>
 
 <script src="../views/caleandar.js"></script>
+<script> 
+var events = [];
+</script>
+{% for item in event_calendar %}
+<!--
+item[0] is a string with year of event
+item[1] is a string with month of event
+item[2] is a string with day of event
+item[3] is a string with name of event
+-->
 <script>
   //https://www.cssscript.com/create-simple-event-calendar-javascript-caleandar-js/
-  var events = [
-    { 'Date': new Date(2019, 11, 24), 'Title': 'Doctor appointment at 3:25pm.' },
-    { 'Date': new Date(2019, 11, 29), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com' },
-    { 'Date': new Date(2019, 11, 31), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts' },
-  ];
+    events.push({ 'Date': new Date('{{ item[0] }}', '{{ item[1] }}', '{{ item[2] }}'), 'Title': '{{ item[3] }}', 'Link': '../app/dive_event.php?id={{ item[4] }}' });
+</script>
+{% endfor %}
+<script>
   var settings = {};
   var element = document.getElementById('caleandar');
   caleandar(element, events, settings);
-
 </script>
+
+{% if error_message is defined %}
+<script>
+  alert('{{ error_message }}');
+</script>
+{% endif %}
+
+
 {% endblock %}
   
 {% block scripts %}

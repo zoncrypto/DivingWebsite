@@ -55,7 +55,7 @@
   }
   .cld-day.today .cld-number{
     background: #0080FF;
-    color: #fff;
+    color: darkred;
   }
   .cld-day.disableDay{
     opacity: 0.5;
