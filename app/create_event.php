@@ -37,12 +37,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $event_spot_name = $spot_name;
                     $event_spot_depth = $spot_depth;
                     $event_spot_type = $spot_type;
-                    } else{
-                        $spot_err = "This dive spot does not exist.";
-                        //echo $twig->render('signup.html', ['error_message' => $username_err, 'style' => "visibility: visible;"]);
                     }
                 } else{
-                    echo "Oops! Something went wrong. Please try again later.";
+                    $msg = "This dive spot does not exist.";
+                    require '../app/random_spots_index.php';
+                    require '../app/event_calendar.php';
+                    require '../app/render_divecenter_main.php';
+                    exit;
                 }
             }
          
@@ -70,20 +71,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $param_event_divespot = $event_spot_id;
                     $param_event_divecenter = $_SESSION['id'];
 
-                    echo $param_event_name ;
-                    echo $param_event_date ;
-                    echo $param_event_maxdivers;
-                    echo $param_price;
-                    echo $param_event_divespot;
-                    echo $param_event_divecenter;
             
                     // Attempt to execute the prepared statement
                     if(mysqli_stmt_execute($stmt)){
                         // Redirect to login page
                         $msg = "Event Created Successfully.";
-                        echo "1";
+                        require '../app/random_spots_index.php';
+                        require '../app/event_calendar.php';
+                        require '../app/render_divecenter_main.php';
                         exit;
-                        //echo $twig->render('login.html', ['error_message' => $login_msg, 'style' => "visibility: visible;"]);
                     } else{
                         echo "Something went wrong. Please try again later.";
                         echo "2";
