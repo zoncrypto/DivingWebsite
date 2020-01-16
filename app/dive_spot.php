@@ -62,7 +62,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         } else{
             // Display an error message if divespot doesn't exist
             $id = $name = $depth = $type = $posLat = $posLng = $spot_image_names = $string_image_names = "";
-            $msg = "No dive spot found with that username.";
+            $msg = "No dive spot found with that name.";
             $style = "visibility: visible;";
             require '../app/index.php';
         }
