@@ -42,24 +42,15 @@
   </br>
   <section class="search-sec">
     <div class="container">
-      <form action="#" method="post" novalidate="novalidate">
+      <form action="../app/dive_spot.php" method="POST" novalidate="novalidate">
         <div class="row">
           <div class="col-lg-12">
             <div class="row">
               <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <input type="text" class="form-control search-slt" placeholder="Enter Dive Spot">
+                <input type="text" class="form-control search-slt" placeholder="Enter Dive Spot" name='name'>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <input type="text" class="form-control search-slt" placeholder="Enter Dive Center">
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <input type="text" class="search-date" placeholder="Search by Date (From)" onfocus="(this.type='date')"
-                  onblur="(this.type='text')">
-                <input type="text" class="search-date" placeholder="Search by Date (To)" onfocus="(this.type='date')"
-                  onblur="(this.type='text')">
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                <button type="submit" class="btn btn-danger wrn-btn">Search</button>
               </div>
             </div>
           </div>
@@ -75,7 +66,7 @@
       <div class="card dive-spot">
         <div class="row">
           <div class="col-6">
-            <img src="../images/Spot1.jpg" alt="Spot 1" style="width:100%">
+            <img src="../spotimages/{{ img1 }}" alt="Spot 1" style="width:100%">
           </div>
           <div class="col-6">
             <div class="card-body">
@@ -90,7 +81,7 @@
       <div class="card dive-spot">
         <div class="row">
           <div class="col-6">
-            <img src="../images/Spot2.jpg" alt="Spot 2" style="width:100%">
+            <img src="../spotimages/{{ img2 }}" alt="Spot 2" style="width:100%">
           </div>
           <div class="col-6">
             <div class="card-body">
@@ -105,7 +96,7 @@
       <div class="card dive-spot">
         <div class="row">
           <div class="col-6">
-            <img src="../images/Spot3.jpg" alt="Spot 3" style="width:100%">
+            <img src="../spotimages/{{ img3 }}" alt="Spot 3" style="width:100%">
           </div>
           <div class="col-6">
             <div class="card-body">
@@ -127,16 +118,37 @@
 </div>
 
 <script src="../views/caleandar.js"></script>
+<script> 
+var events = [];
+</script>
+{% for item in event_calendar %}
+<!--
+item[0] is a string with year of event
+item[1] is a string with month of event
+item[2] is a string with day of event
+item[3] is a string with name of event
+-->
 <script>
   //https://www.cssscript.com/create-simple-event-calendar-javascript-caleandar-js/
-  var events = [
-    { 'Date': new Date(2019, 11, 24), 'Title': 'Doctor appointment at 3:25pm.' },
-    { 'Date': new Date(2019, 11, 29), 'Title': 'New Garfield movie comes out!', 'Link': "../app/dive_event.php" },
-    { 'Date': new Date(2019, 11, 31), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts' },
-  ];
+    events.push({ 'Date': new Date('{{ item[0] }}', '{{ item[1] }}', '{{ item[2] }}'), 'Title': '{{ item[3] }}', 'Link': '../app/dive_event.php?id={{ item[4] }}' });
+</script>
+{% endfor %}
+<script>
   var settings = {};
   var element = document.getElementById('caleandar');
   caleandar(element, events, settings);
-
 </script>
+
+{% if error_message is defined %}
+<script>
+  alert('{{ error_message }}');
+</script>
+{% endif %}
+
+
 {% endblock %}
+  
+{% block scripts %}
+  {{ parent() }}
+{% endblock %}
+

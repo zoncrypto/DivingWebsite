@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         if(password_verify($password, $hashed_password)){
                         //if ($password == $hashed_password){
                             // Password is correct, so start a new session
-                            session_start();
+                            //session_start();
                             
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
@@ -84,9 +84,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     
                                     if(mysqli_stmt_num_rows($stmt) == 1){
                                         $_SESSION["usertype"] = "diver";
+                                        require '../app/event_calendar.php';
                                         require '../app/render_diver_main.php';
                                     } else{
                                         $_SESSION["usertype"] = "divecenter";
+                                        require '../app/event_calendar.php';
                                         require '../app/render_divecenter_main.php';
                                     }
                                 } else{

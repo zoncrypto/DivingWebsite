@@ -56,18 +56,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($spot_err)){
         
         // Prepare an insert statement
-                $sql = "INSERT INTO diveevents (name, date, maxdivers, divespot, divecenter) VALUES (?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO diveevents (name, date, maxdivers, price, divespot, divecenter) VALUES (?, ?, ?, ?, ?, ?)";
          
                 if($stmt = mysqli_prepare($link, $sql)){
                     // Bind variables to the prepared statement as parameters
-                    mysqli_stmt_bind_param($stmt, "ssiii", $param_event_name, $param_event_date, $param_event_maxdivers, $param_event_divespot, $param_event_divecenter);
+                    mysqli_stmt_bind_param($stmt, "ssiiii", $param_event_name, $param_event_date, $param_event_maxdivers, $param_price, $param_event_divespot, $param_event_divecenter);
             
                     // Set parameters
                     $param_event_name = trim($_POST["name"]);
                     $param_event_date = trim($_POST["date"]);
                     $param_event_maxdivers = trim($_POST["maxdivers"]);
+                    $param_price = trim($_POST["price"]);
                     $param_event_divespot = $event_spot_id;
                     $param_event_divecenter = $_SESSION['id'];
+
+                    echo $param_event_name ;
+                    echo $param_event_date ;
+                    echo $param_event_maxdivers;
+                    echo $param_price;
+                    echo $param_event_divespot;
+                    echo $param_event_divecenter;
             
                     // Attempt to execute the prepared statement
                     if(mysqli_stmt_execute($stmt)){
