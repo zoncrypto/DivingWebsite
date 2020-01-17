@@ -145,3 +145,21 @@ body {
 .diveEventPhoto h3{
     text-align: center;
 }
+
+#book_text{
+  color: rgb(59, 5, 95);
+  text-shadow: 0px 10px 15px #80dfff;
+  font-weight: 700;
+  font-size: 4em;
+  text-align: center;
+}
+
+#event_spot_link{
+  border: 3px solid darkslategray;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  background-color: rgb(25, 23, 58, 0.3);
+  color: darkblue;  
+}

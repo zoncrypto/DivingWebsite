@@ -13,6 +13,38 @@ session_start();
 require_once "../app/dbconfig.php";
 require_once "../app/twig.php";
  
+//Check if the logged in user is a diver to render the book button.
+if(isset($_SESSION["loggedin"])){
+        // Prepare a select statement
+        $sql = "select t0.id  from `users` t0 
+                inner join `divers` t1 on t0.id = t1.user_id
+                where t0.username = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            
+            // Set parameters
+            $param_username = trim($_SESSION["username"]);
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    mysqli_stmt_bind_result($stmt, $id);
+                   if(mysqli_stmt_fetch($stmt)){
+                    $diver_id = $id;
+                    }    
+                }  else {
+                    $center = true;
+                }  
+            }
+         
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+}
 // Prepare a select statement
 $sql = "SELECT  t0.id,t0.name,t0.date, t0.maxdivers,t1.name as `diveCenterName`, t2.name as `spotName`,t2.depth,t2.type, COUNT(t3.diver_id)  as `participants`
 FROM `diveevents` t0 

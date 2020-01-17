@@ -20,7 +20,8 @@
     </section>
     <section class="diveEventHead col-7">
         <div class="container">
-            <h1>Fun Dive at: {{ spotName }}</h1>
+            <h1>Fun dive at:</h1>
+            <h1 class="card-title"><a id="event_spot_link" href="#" onclick="location.href='../app/dive_spot.php?name={{ spotName }}'">{{ spotName }}</a></h1>
             <br>
             <h2>Depth : {{ depth }} meters</h2>
             <h2>Type: {{ type }} </h2>
@@ -41,71 +42,20 @@
                         {% endfor %}
                     </ul>
                 </div>
+
+                {% if diver_id is defined %}
                 <form method="POST" action="book_event.php" enctype="multipart/form-data">
                     <input type="hidden" name="event_id" value="{{ id }}">
                     <input type="hidden" name="participants"  value="{{ participants }}">
                     <input type="hidden" name="maxdivers"  value="{{ maxdivers }}">
                     <div class="card-footer"><button type="submit">Book now!</button></div>
                 </form>
-                
-            </div>
-        </div>
-    </section>
-    <section class="col-7 diveEventPhoto">
-        <!--<h3>Photos of dive spot</h3> -->
-        <!-- Container for the image gallery -->
-        <div class="container">
-
-            <!-- Full-width images with number text -->
-            <div class="mySlides">
-                <div class="numbertext">1 / 6</div>
-                <img src="../images/dive1.jpg">
-            </div>
-            <div class="mySlides">
-                <div class="numbertext">2 / 6</div>
-                <img src="../images/dive2.jpg">
-            </div>
-            <div class="mySlides">
-                <div class="numbertext">3 / 6</div>
-                <img src="../images/dive3.jpg">
-            </div>
-            <div class="mySlides">
-                <div class="numbertext">4 / 6</div>
-                <img src="../images/dive4.jpg">
-            </div>
-            <div class="mySlides">
-                <div class="numbertext">5 / 6</div>
-                <img src="../images/dive6.jpg">
-            </div>
-            <div class="mySlides">
-                <div class="numbertext">6 / 6</div>
-                <img src="../images/dive7.jpg">
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <!-- Thumbnail images -->
-            <div class="row">
-                <div class="column">
-                    <img class="cursor" src="../images/dive1.jpg" onclick="currentSlide(1)" alt="The Woods">
-                </div>
-                <div class="column">
-                    <img class="cursor" src="../images/dive2.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
-                </div>
-                <div class="column">
-                    <img class="cursor" src="../images/dive3.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
-                </div>
-                <div class="column">
-                    <img class="cursor" src="../images/dive4.jpg" onclick="currentSlide(4)" alt="Northern Lights">
-                </div>
-                <div class="column">
-                    <img class="cursor" src="../images/dive6.jpg" onclick="currentSlide(5)" alt="Nature and sunrise">
-                </div>
-                <div class="column">
-                    <img class="cursor" src="../images/dive7.jpg" onclick="currentSlide(6)" alt="Snowy Mountains">
-                </div>
+                <br>
+                {% elseif center is defined %}
+                <div id='book_text'><h4>Divers only can book to events!</h4></div>
+                {% else %}
+                <div id='book_text'><h4>Log in to book your place!</h4></div>
+                {% endif %}                
             </div>
         </div>
     </section>
