@@ -10,37 +10,48 @@
 {{ parent() }}
 
 <div class="row">
-    <section class="diveEventHead col-6">
+    <section class="diveEventHead col-5">
         <div class="container">
-        <h1>Dive event : Blah Blah </h1>
-        <h1>Fun Dive at: Profitis Ilias</h1>
-        <br>
-        <h2>Depth : 20 meters</h2>
-        <h2>Type: mple </h2>
+            <h1>Dive event : {{ event_name }} </h1>
+            <h2>Date : {{ date }} </h2>
+            <br>
+            <h2>Organized by: {{ diveCenterName }} </h2>
         </div>
     </section>
-    <section class="col-6 diveEventMap">
-        Here goes a map
+    <section class="diveEventHead col-7">
+        <div class="container">
+            <h1>Fun Dive at: {{ spotName }}</h1>
+            <br>
+            <h2>Depth : {{ depth }} meters</h2>
+            <h2>Type: {{ type }} </h2>
+        </div>
     </section>
 </div>
 </br>
+</br>
 <div class="row">
-    <section class="diveEventParticipants col-4">
+    <section class="diveEventParticipants col-5">
         <div class="container">
             <div class="card">
-                <div class="card-header">Participants x/y</div>
+                <div class="card-header">Participants {{ participants }}/{{ maxdivers }}</div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Diver 1</li>
-                        <li class="list-group-item">Diver 2</li>
-                        <li class="list-group-item">Diver 3</li>
+                        {% for item in divers %}
+                        <li class="list-group-item">{{ item }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
-                <div class="card-footer"><button>Book now!</button></div>
+                <form method="POST" action="book_event.php" enctype="multipart/form-data">
+                    <input type="hidden" name="event_id" value="{{ id }}">
+                    <input type="hidden" name="participants"  value="{{ participants }}">
+                    <input type="hidden" name="maxdivers"  value="{{ maxdivers }}">
+                    <div class="card-footer"><button type="submit">Book now!</button></div>
+                </form>
+                
             </div>
         </div>
     </section>
-    <section class="col-8 diveEventPhoto">
+    <section class="col-7 diveEventPhoto">
         <!--<h3>Photos of dive spot</h3> -->
         <!-- Container for the image gallery -->
         <div class="container">
@@ -78,28 +89,22 @@
             <!-- Thumbnail images -->
             <div class="row">
                 <div class="column">
-                    <img class="cursor" src="../images/dive1.jpg"  onclick="currentSlide(1)"
-                        alt="The Woods">
+                    <img class="cursor" src="../images/dive1.jpg" onclick="currentSlide(1)" alt="The Woods">
                 </div>
                 <div class="column">
-                    <img class="cursor" src="../images/dive2.jpg" onclick="currentSlide(2)"
-                        alt="Cinque Terre">
+                    <img class="cursor" src="../images/dive2.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
                 </div>
                 <div class="column">
-                    <img class="cursor" src="../images/dive3.jpg" onclick="currentSlide(3)"
-                        alt="Mountains and fjords">
+                    <img class="cursor" src="../images/dive3.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
                 </div>
                 <div class="column">
-                    <img class="cursor" src="../images/dive4.jpg" onclick="currentSlide(4)"
-                        alt="Northern Lights">
+                    <img class="cursor" src="../images/dive4.jpg" onclick="currentSlide(4)" alt="Northern Lights">
                 </div>
                 <div class="column">
-                    <img class="cursor" src="../images/dive6.jpg" onclick="currentSlide(5)"
-                        alt="Nature and sunrise">
+                    <img class="cursor" src="../images/dive6.jpg" onclick="currentSlide(5)" alt="Nature and sunrise">
                 </div>
                 <div class="column">
-                    <img class="cursor" src="../images/dive7.jpg" onclick="currentSlide(6)"
-                        alt="Snowy Mountains">
+                    <img class="cursor" src="../images/dive7.jpg" onclick="currentSlide(6)" alt="Snowy Mountains">
                 </div>
             </div>
         </div>
