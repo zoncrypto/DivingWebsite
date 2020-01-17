@@ -45,13 +45,20 @@
                 </div>
 
                 {% if diver_id is defined %}
-                <form method="POST" action="book_event.php" enctype="multipart/form-data">
-                    <input type="hidden" name="event_id" value="{{ id }}">
-                    <input type="hidden" name="participants" value="{{ participants }}">
-                    <input type="hidden" name="maxdivers" value="{{ maxdivers }}">
-                    <div class="card-footer"><button type="submit">Book now!</button></div>
-                </form>
-                <br>
+                    {% if passedevent %}
+                    <div id='book_text'>
+                        <h4>Event has expired!</h4>
+                    </div>
+                    {% else %}
+                    <form method="POST" action="book_event.php" enctype="multipart/form-data">
+                        <input type="hidden" name="event_id" value="{{ id }}">
+                        <input type="hidden" name="participants" value="{{ participants }}">
+                        <input type="hidden" name="maxdivers" value="{{ maxdivers }}">
+                        <input type="hidden" name="eventdate" value="{{ date }}">
+                        <div class="card-footer"><button type="submit">Book now!</button></div>
+                    </form>
+                    <br>
+                    {% endif %}
                 {% elseif center is defined %}
                 <div id='book_text'>
                     <h4>Divers only can book to events!</h4>

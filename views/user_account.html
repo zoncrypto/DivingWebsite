@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ parent() }}
+<link rel="stylesheet" href="../views/css/user_account.css">
+
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+</br>
+</br>
+<h1>Your events</h1>
+</br>
+</br>
+<div class="table-responsive-lg table-bordered table-hovertable-container">
+    <table class="table sortable" id="events-table">
+        <thead class="thead-light" style="white-space:nowrap">
+            <tr class="child">
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Spot Name</th>
+                <th>Depth</th>
+                <th>Type</th>
+                <th>Dive Center</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody style="white-space:nowrap">
+            {% set i = 0 %}
+            {% for item in account_details %}
+            <tr class="child">
+                <td>{{ item.name }}</td>
+                <td>{{ item.date}}</td>
+                <td>{{ item.spotName}}</td>
+                <td>{{ item.depth}}</td>
+                <td>{{ item.type}}</td>
+                <td>{{ item.diveCenterName}}</td>
+                <td>{{ item.price}}</td>
+            </tr>
+            {% set i = i + 1 %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</br>
+{% endblock %}

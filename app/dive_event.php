@@ -72,6 +72,14 @@ if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_result($stmt,$id, $name,$date, $maxdivers, $diveCenterName, $spotName, $depth, $type,$participants);
             if(mysqli_stmt_fetch($stmt)){
 
+                $current_date = date('Y-m-d');
+
+                if($date < $current_date){
+                    $passedevent = true;
+                }else{
+                    $passedevent = false;
+                }
+
                 //select all participants for this event
                  $sql2 = "SELECT CONCAT(t1.fname,' ',t1.lname) as `diverName` FROM eventparticipants t0 
                  inner join divers t1 on t0.diver_id = t1.user_id  WHERE event_id = $id;";

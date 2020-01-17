@@ -17,6 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $curr_participants = $_POST["participants"];
     $max_divers = $_POST["maxdivers"];
 
+
     if ($curr_participants ==  $max_divers){
 $msg = "Maximum number of participants reached.";
                     require '../app/random_spots_index.php';
