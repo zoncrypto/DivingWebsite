@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ parent() }}
+<link rel="stylesheet" href="../views/css/dive_event.css">
+
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+</br>
+</br>
+<div class="row">
+    <section class="diveEventHead col-5">
+        <div class="container">
+            <h1>Dive event : {{ event_name }} </h1>
+            <h2>Date : {{ date }} </h2>
+            <br>
+            <h2>Organized by: {{ diveCenterName }} </h2>
+        </div>
+        <div class="container">
+            <h1>Fun dive at:</h1>
+            <h1 class="card-title"><a id="event_spot_link" href="#"
+                    onclick="location.href='../app/dive_spot.php?name={{ spotName }}'">{{ spotName }}</a></h1>
+            <br>
+            <h2>Depth : {{ depth }} meters</h2>
+            <h2>Type: {{ type }} </h2>
+        </div>
+    </section>
+    <section class="diveEventParticipants col-5">
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">Participants {{ participants }}/{{ maxdivers }}</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for item in divers %}
+                        <li class="list-group-item">{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                {% if diver_id is defined %}
+                    {% if passedevent %}
+                    <div id='book_text'>
+                        <h4>Event has expired!</h4>
+                    </div>
+                    {% else %}
+                    <form method="POST" action="book_event.php" enctype="multipart/form-data">
+                        <input type="hidden" name="event_id" value="{{ id }}">
+                        <input type="hidden" name="participants" value="{{ participants }}">
+                        <input type="hidden" name="maxdivers" value="{{ maxdivers }}">
+                        <input type="hidden" name="eventdate" value="{{ date }}">
+                        <div class="card-footer"><button type="submit">Book now!</button></div>
+                    </form>
+                    <br>
+                    {% endif %}
+                {% elseif center is defined %}
+                <div id='book_text'>
+                    <h4>Divers only can book to events!</h4>
+                </div>
+                {% else %}
+                <div id='book_text'>
+                    <h4>Log in to book your place!</h4>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</div>
+</br>
+{% endblock %}

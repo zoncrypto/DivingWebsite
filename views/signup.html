@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ parent() }}
+
+<link rel="stylesheet" href="../views/css/signup.css">
+
+
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+
+    <div class="container register">
+            <div class="register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Diver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Dive Center</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading text-white">Sign Up as a Diver</h3>
+                        <div id="error" style="{{ style }}"> {{ error_message }} </div>
+                        <form action="registerdiver.php" method="POST">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="First Name *" value="" name="fname" required>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Last Name *" value="" name="lname" required>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i> </span>
+                                    </div>
+                                    <input placeholder="Birthday *" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" value="" name="bday" required>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-phone-square-alt"></i> </span>
+                                    </div>
+                                    <input type="tel" minlength="10" maxlength="10" pattern="[0-9]{10}" title="Enter a valid phone." name="phonenumber" class="form-control" id="phone" placeholder="Your Phone Number *" value="" required>
+                                    <div class="invalid-feedback">
+                                        Please type a valid phone number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-at"></i> </span>
+                                    </div>
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email *" value="" name="email" required>
+                                    <!--<div class="invalid-feedback">
+                                        Please type an email format type
+                                    </div>-->
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="name" placeholder="Your Username *" name="username" required>
+                                    <div class="invalid-feedback">
+                                        Username must be between 2 and 10 characters
+                                    </div>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input type="password" class="form-control" id="pass" placeholder="Your Password *" value="" name="password" required>
+                                    <div class="invalid-feedback">
+                                        Enter a valid password. 5-10 characters [lowercase, uppercase, number]
+                                    </div>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Confirm password *" value="" name="confirm_password" required>
+                                </div>
+                                <input type="submit" class="btnRegister"  value="Sign Up"/>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h3  class="register-heading text-white">Sign Up as a Dive Center</h3>
+                        <div id="error" style="{{ style }}"> {{ error_message }} </div>
+                        <form action="registerdivecenter.php" method="POST">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Center Name *" value="" name="c_name" required>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-map-marker-alt"></i> </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Address *" value="" name="c_address" required>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-phone-square-alt"></i> </span>
+                                    </div>
+                                    <input type="tel" minlength="10" maxlength="10" pattern="[0-9]{10}" title="Enter a valid phone." name="c_phone" class="form-control" id="centerphone" placeholder="Your Phone Number *" value="" required>
+                                    <div class="invalid-feedback">
+                                        Please type a valid phone number
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-at"></i> </span>
+                                    </div>
+                                    <input type="email" class="form-control" id="email" placeholder="Email *" value="" name="c_email" required>
+                                    <!--<div class="invalid-feedback">
+                                        Please type an email format type
+                                    </div>-->
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="centeruname" placeholder="Your Username *" name="c_username" required>
+                                    <div class="invalid-feedback">
+                                        Username must be between 2 and 10 characters
+                                    </div>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input type="password" class="form-control" id="centerpass" placeholder="Your Password *" value="" name="c_password" required>
+                                    <div class="invalid-feedback">
+                                        Enter a valid password. 5-10 characters [lowercase, uppercase, number]
+                                    </div>
+                                </div>
+                                <div class="form-group input-group mt-5">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Confirm password *" value="" name="c_confirm_password" required>
+                                </div>
+                                <input type="submit" class="btnRegister"  value="Sign Up"/>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+    {% endblock %}
+    {% block scripts %}
+        {{ parent() }}
+        <script src="../views/formvalidation.js"></script>
+    {% endblock %}
+    

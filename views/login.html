@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ parent() }}
+
+<link rel="stylesheet" href="../views/css/login.css">
+
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+
+    <div class="container" id="signinbox">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <h1>Sign In</h1>
+          <div id="error" style="{{ style }}"> {{ error_message }} </div>
+          <br>
+          <form action="loginprocess.php" method="POST" >
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text"class="form-control"name="username" id="name" placeholder="Username" required>
+              <!--
+              <div class="invalid-feedback">
+                Username must be between 2 and 10 characters
+              </div>
+              -->
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password"class="form-control"name="password" id="pass" placeholder="Password" required>
+                <!--
+                <div class="invalid-feedback">
+                  Enter a valid password. 5-10 characters [lowercase, uppercase, number]
+                </div>
+                -->
+              </div>
+                  Don't have an accout? 
+                  <a href="../app/signup.php">  Sign up!</a>
+    
+                  <br>
+                  <br>
+                  <input type="submit"value="Sign In" class="btn btn-primary btn-block">
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    {% endblock %}
+    {% block scripts %}
+      {{ parent() }}
+      <script src="../views/formvalidation.js"></script>
+    {% endblock %}
+    
+    

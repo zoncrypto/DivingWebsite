@@ -1,0 +1,9 @@
+{
+
+    "name": "DivingWebsite/no-framework",
+    "description": "without a framework",
+    "type": "project",
+    "require": { "twig/twig": "^3.0" },
+    "autoload": {"psr-4": {"App\\": "app/"}}
+    
+}
